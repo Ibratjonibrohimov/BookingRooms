@@ -17,8 +17,8 @@ public class Booking {
     private Long id;
     @ManyToOne
     private Resident resident;
-    private LocalDateTime startAt;
-    private LocalDateTime endAt;
+    private LocalDateTime start;
+    private LocalDateTime end;
     @ManyToOne
     private Room room;
 }
