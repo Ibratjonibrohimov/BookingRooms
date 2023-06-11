@@ -11,13 +11,16 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "Bookings")
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Resident resident;
+    @Column(name = "start_at")
     private LocalDateTime start;
+    @Column(name = "end_at")
     private LocalDateTime end;
     @ManyToOne
     private Room room;

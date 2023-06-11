@@ -1,5 +1,6 @@
 package uz.impact.bookingrooms.dto;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 
 public class BookingDto {
     private ResidentDto residentDto;
+
     private LocalDateTime start;
     private LocalDateTime end;
 }
