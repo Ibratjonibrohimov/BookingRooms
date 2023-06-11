@@ -2,10 +2,7 @@ package uz.impact.bookingrooms.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uz.impact.bookingrooms.dto.RoomDto;
 import uz.impact.bookingrooms.dto.RoomResultsDto;
 import uz.impact.bookingrooms.service.RoomService;
@@ -24,5 +21,9 @@ public class RoomController {
                                                       @RequestParam(value = "page_size") Optional<Integer> pageSize)
     {
         return roomService.getAllRooms(search,type,page,pageSize);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<RoomDto> getById(@PathVariable Long id){
+        return roomService.getById(id);
     }
 }

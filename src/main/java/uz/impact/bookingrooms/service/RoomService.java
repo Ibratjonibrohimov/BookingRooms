@@ -9,4 +9,6 @@ import java.util.Optional;
 
 public interface RoomService {
     ResponseEntity<RoomResultsDto> getAllRooms(Optional<String> search, Optional<String> type, Optional<Integer> page, Optional<Integer> pageSize);
+
+    ResponseEntity<RoomDto> getById(Long id);
 }

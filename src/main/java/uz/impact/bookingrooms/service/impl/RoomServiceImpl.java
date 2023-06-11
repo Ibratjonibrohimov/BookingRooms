@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import uz.impact.bookingrooms.dto.RoomDto;
 import uz.impact.bookingrooms.dto.RoomResultsDto;
 import uz.impact.bookingrooms.entity.Room;
+import uz.impact.bookingrooms.exception.NoResourceFoundException;
 import uz.impact.bookingrooms.repository.RoomRepository;
 import uz.impact.bookingrooms.service.RoomService;
 import uz.impact.bookingrooms.service.mapper.RoomMapper;
@@ -28,5 +29,11 @@ public class RoomServiceImpl implements RoomService {
                 results.stream().map(RoomMapper::toDto).collect(Collectors.toList())
         );
         return ResponseEntity.ok(roomResultsDto);
+    }
+
+    @Override
+    public ResponseEntity<RoomDto> getById(Long id) {
+        Room room = roomRepository.findById(id).orElseThrow(() -> new NoResourceFoundException("topilmadi"));
+        return ResponseEntity.ok(RoomMapper.toDto(room));
     }
 }
