@@ -1,2 +1,12 @@
-package uz.impact.bookingrooms.dto;public class ResidentDto {
+package uz.impact.bookingrooms.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ResidentDto {
+    private String name;
 }
