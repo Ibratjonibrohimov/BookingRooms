@@ -10,7 +10,7 @@ public class RoomMapper {
         return new RoomDto(
                 room.getId(),
                 room.getName(),
-                room.getRoomType().getName(),
+                room.getType().getName(),
                 room.getCapacity());
     }
 }

@@ -17,6 +17,6 @@ public class Room {
     private String name;
     @ManyToOne
     @JoinColumn(name = "type_id")
-    RoomType roomType;
+    RoomType type;
     private Integer capacity;
 }
