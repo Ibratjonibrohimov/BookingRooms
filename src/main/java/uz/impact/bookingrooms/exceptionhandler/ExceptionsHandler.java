@@ -13,7 +13,7 @@ import uz.impact.bookingrooms.exception.NoResourceFoundException;
 @RestControllerAdvice
 public class ExceptionsHandler {
     @ExceptionHandler(NoResourceFoundException.class)
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ErrorDto noResourceHandler(NoResourceFoundException exception){
         return ErrorDto.builder().error(exception.getMessage()).build();
     }
