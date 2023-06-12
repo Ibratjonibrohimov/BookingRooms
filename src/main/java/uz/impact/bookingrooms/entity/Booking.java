@@ -24,4 +24,11 @@ public class Booking {
     private LocalDateTime end;
     @ManyToOne
     private Room room;
+
+    public Booking(Resident resident, LocalDateTime start, LocalDateTime end, Room room) {
+        this.resident = resident;
+        this.start = start;
+        this.end = end;
+        this.room = room;
+    }
 }

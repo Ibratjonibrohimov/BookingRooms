@@ -1,9 +1,7 @@
 package uz.impact.bookingrooms.service;
 
 import org.springframework.http.ResponseEntity;
-import uz.impact.bookingrooms.dto.FreeTimeDto;
-import uz.impact.bookingrooms.dto.RoomDto;
-import uz.impact.bookingrooms.dto.RoomResultsDto;
+import uz.impact.bookingrooms.dto.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,5 +12,7 @@ public interface RoomService {
 
     ResponseEntity<RoomDto> getById(Long id);
 
-    ResponseEntity<List<FreeTimeDto>> getAvialableTime(Long id, Optional<LocalDate> date);
+    ResponseEntity<List<FreeTimeDto>> getAvailableTime(Long id, Optional<LocalDate> date);
+
+    ResponseEntity<ResponseDto> bookRoom(Long id, BookingDto book);
 }

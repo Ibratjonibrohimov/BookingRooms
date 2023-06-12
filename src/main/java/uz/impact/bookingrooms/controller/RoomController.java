@@ -3,9 +3,7 @@ package uz.impact.bookingrooms.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.impact.bookingrooms.dto.FreeTimeDto;
-import uz.impact.bookingrooms.dto.RoomDto;
-import uz.impact.bookingrooms.dto.RoomResultsDto;
+import uz.impact.bookingrooms.dto.*;
 import uz.impact.bookingrooms.entity.Booking;
 import uz.impact.bookingrooms.repository.BookingRepository;
 import uz.impact.bookingrooms.service.RoomService;
@@ -35,7 +33,10 @@ public class RoomController {
     public ResponseEntity<List<FreeTimeDto>> getAvailableTim(@PathVariable Long id,
                                                              @RequestParam Optional<LocalDate> date)
     {
-        return roomService.getAvialableTime(id,date);
+        return roomService.getAvailableTime(id,date);
     }
-
+    @PostMapping("/{id}/book")
+    public ResponseEntity<ResponseDto> bookRoom(@PathVariable Long id, @RequestBody BookingDto book){
+        return roomService.bookRoom(id,book);
+    }
 }

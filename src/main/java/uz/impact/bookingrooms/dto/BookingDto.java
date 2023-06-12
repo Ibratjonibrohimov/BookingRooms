@@ -1,5 +1,7 @@
 package uz.impact.bookingrooms.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -15,8 +17,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 
 public class BookingDto {
+    @JsonProperty(value = "resident")
     private ResidentDto residentDto;
-
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime start;
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime end;
 }

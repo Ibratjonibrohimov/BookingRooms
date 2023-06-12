@@ -7,4 +7,8 @@ public class ResidentMapper {
     public static ResidentDto toDto(Resident resident){
         return new ResidentDto(resident.getName());
     }
+
+    public static Resident toEntity(ResidentDto residentDto) {
+        return new Resident(residentDto.getName());
+    }
 }
