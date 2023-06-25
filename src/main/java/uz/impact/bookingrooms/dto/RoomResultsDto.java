@@ -13,14 +13,14 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoomResultsDto {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(index = 0)
+
+    @JsonProperty(index = 0,defaultValue = "0")
     private Integer page;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(index = 1)
+
+    @JsonProperty(index = 1,defaultValue = "0")
     private Integer count;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "page_size",index = 2)
+
+    @JsonProperty(value = "page_size",index = 2,defaultValue = "0")
     private Integer pageSize;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(index = 3)

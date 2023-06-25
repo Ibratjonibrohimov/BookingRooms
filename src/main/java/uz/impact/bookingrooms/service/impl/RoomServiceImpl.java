@@ -107,7 +107,7 @@ public class RoomServiceImpl implements RoomService {
 
         if(bookingTimes.isEmpty()) {
             bookingRepository.save(BookingMapper.toEntity(book,resident,room));
-            return ResponseEntity.status(201).body(ResponseDto.builder().massage("xona muvaffaqiyatli band qilindi").build());
+            return ResponseEntity.status(201).body(ResponseDto.builder().message("xona muvaffaqiyatli band qilindi").build());
         }
 
         for (Booking bookTime:bookingTimes) {
@@ -117,9 +117,13 @@ public class RoomServiceImpl implements RoomService {
                     (book.getStart().isAfter(bookTime.getStart()) && book.getStart().isBefore(bookTime.getEnd())) ||
                             (book.getEnd().isAfter(bookTime.getStart()) && book.getEnd().isBefore(bookTime.getEnd()))
             ) throw  new DataNotMatchesException("uzr, siz tanlagan vaqtda xona band");
+            if(
+                    (book.getStart().isBefore(bookTime.getStart()) && book.getEnd().isAfter(bookTime.getStart())) ||
+                            (book.getStart().isBefore(bookTime.getEnd()) && book.getEnd().isAfter(bookTime.getEnd()))
+            ) throw  new DataNotMatchesException("uzr, siz tanlagan vaqtda xona band");
         }
 
         bookingRepository.save(BookingMapper.toEntity(book,resident,room));
-        return ResponseEntity.status(201).body(ResponseDto.builder().massage("xona muvaffaqiyatli band qilindi").build());
+        return ResponseEntity.status(201).body(ResponseDto.builder().message("xona muvaffaqiyatli band qilindi").build());
     }
 }

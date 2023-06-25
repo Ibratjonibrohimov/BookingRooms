@@ -1,6 +1,7 @@
 package uz.impact.bookingrooms.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.impact.bookingrooms.dto.*;
@@ -31,11 +32,11 @@ public class RoomController {
 
     @GetMapping("/{id}/availability")
     public ResponseEntity<List<FreeTimeDto>> getAvailableTim(@PathVariable Long id,
-                                                             @RequestParam Optional<LocalDate> date)
+                                                             @RequestParam() @DateTimeFormat(pattern = "dd-MM-yyyy") Optional<LocalDate> date)
     {
         return roomService.getAvailableTime(id,date);
     }
-    @PostMapping("/{id}/book")
+    @PostMapping("/{id}/book/")
     public ResponseEntity<ResponseDto> bookRoom(@PathVariable Long id, @RequestBody BookingDto book){
         return roomService.bookRoom(id,book);
     }
